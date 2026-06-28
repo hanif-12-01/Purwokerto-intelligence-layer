@@ -1,87 +1,179 @@
 import React from "react";
-import { Info, Code2, BookOpen, GraduationCap } from "lucide-react";
+import {
+  BookOpen,
+  Code2,
+  Database,
+  Globe,
+  Info,
+  Layers,
+  LayoutDashboard,
+  Map,
+  Bot,
+  ShieldCheck,
+  SlidersHorizontal,
+  Users,
+} from "lucide-react";
+
+const learningFocus = [
+  { icon: LayoutDashboard, label: "Dashboard UI & data visualization" },
+  { icon: SlidersHorizontal, label: "Rule-based scoring & decision support" },
+  { icon: Users, label: "Civic intelligence & feedback classification" },
+  { icon: Layers, label: "Smart city concepts & urban priority mapping" },
+  { icon: Code2, label: "React, TypeScript, Tailwind CSS, Vite" },
+  { icon: ShieldCheck, label: "UI/UX design for public-facing prototypes" },
+];
+
+const notIncluded = [
+  { icon: Database, label: "Backend server or database" },
+  { icon: ShieldCheck, label: "Authentication or user accounts" },
+  { icon: Globe, label: "External APIs or third-party services" },
+  { icon: Map, label: "Official GIS boundary integration" },
+  { icon: Bot, label: "Real AI model or LLM integration" },
+];
 
 export const AboutPage: React.FC = () => {
   return (
-    <div className="max-w-3xl mx-auto space-y-8">
+    <div className="mx-auto max-w-5xl space-y-8">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-slate-900 tracking-tight flex items-center space-x-2">
-          <Info className="h-8 w-8 text-brand-600" />
-          <span>About Project</span>
-        </h1>
-        <p className="text-slate-500 mt-1">
-          Learn about the purpose, tech stack, and roadmap for Purwokerto Intelligence Layer.
-        </p>
-      </div>
-
-      {/* Main Narrative */}
-      <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
-        <div className="space-y-4">
-          <h3 className="font-bold text-xl text-slate-800 flex items-center space-x-2">
-            <GraduationCap className="h-5.5 w-5.5 text-brand-600" />
-            <span>Learning Portfolio & Objectives</span>
-          </h3>
-          <p className="text-slate-600 leading-relaxed">
-            The <strong>Purwokerto Intelligence Layer</strong> is built as an educational portfolio showcasing the intersection of informatics, decision science, and urban planning. By mapping simulated indices across Purwokerto districts, this prototype demonstrates how simple rule-based decision trees can assist public policy planners.
-          </p>
-          <p className="text-slate-600 leading-relaxed">
-            Specifically, this project serves to apply:
-          </p>
-          <ul className="list-disc pl-5 space-y-2 text-slate-600 text-sm">
-            <li>
-              <strong>Structured Data Models:</strong> Implementing custom TypeScript types to model geographical entities and their multi-dimensional attributes.
-            </li>
-            <li>
-              <strong>Decision Logic (Rule-based):</strong> Implementing prioritized weighted sums to score region demands and map them to dynamic status levels.
-            </li>
-            <li>
-              <strong>Modern UI/UX principles:</strong> Design layouts utilizing responsive grid frameworks, visual indicator color maps, and semantic accessibility elements.
-            </li>
-            <li>
-              <strong>Smart City Context:</strong> Learning concepts related to urban mobility, public service distribution, and civic resource optimization.
-            </li>
-          </ul>
+      <section className="rounded-3xl border border-amber-100/90 bg-white/80 p-6 shadow-sm shadow-amber-900/5 backdrop-blur sm:p-8">
+        <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-emerald-800 ring-1 ring-emerald-100">
+          <Info className="h-4 w-4" /> About This Project
         </div>
+        <h1 className="mt-4 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
+          Purwokerto Intelligence Layer
+        </h1>
+        <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+          An informatics learning portfolio project exploring smart city concepts, civic intelligence,
+          dashboard UI, scoring systems, and rule-based decision support — built with React,
+          TypeScript, Tailwind CSS, and Vite.
+        </p>
+      </section>
 
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h3 className="font-bold text-xl text-slate-800 flex items-center space-x-2">
-            <Code2 className="h-5.5 w-5.5 text-brand-600" />
-            <span>Tech Stack Foundation</span>
-          </h3>
-          <p className="text-slate-600 leading-relaxed text-sm">
-            This prototype is built on top of a highly optimized, standard frontend foundation:
-          </p>
-          <div className="grid grid-cols-2 gap-4 text-xs sm:text-sm">
-            <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="font-semibold text-slate-800 block">Framework & Bundling</span>
-              <span className="text-slate-500">React + TypeScript + Vite</span>
-            </div>
-            <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="font-semibold text-slate-800 block">Styling Engine</span>
-              <span className="text-slate-500">Tailwind CSS (Utility-first)</span>
-            </div>
-            <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="font-semibold text-slate-800 block">Routing & Navigation</span>
-              <span className="text-slate-500">React Router DOM</span>
-            </div>
-            <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-              <span className="font-semibold text-slate-800 block">Iconography</span>
-              <span className="text-slate-500">Lucide React Icons</span>
-            </div>
+      {/* Project Purpose */}
+      <section className="grid gap-5 lg:grid-cols-2">
+        <div className="rounded-3xl border border-stone-200 bg-white/85 p-6 shadow-sm shadow-amber-900/5">
+          <div className="flex items-center gap-2 border-b border-stone-100 pb-4">
+            <BookOpen className="h-5 w-5 text-emerald-700" />
+            <h2 className="text-lg font-extrabold text-slate-950">Project Purpose</h2>
+          </div>
+          <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
+            <p>
+              This project is an <strong>informatics learning and portfolio project</strong>. It is
+              adapted from the CIVICTWIN Purwokerto proposal concept, with all Semarang-specific context
+              fully replaced with Purwokerto-relevant urban issues, districts, and local identity.
+            </p>
+            <p>
+              The goal is to demonstrate how civic data simulation, rule-based scoring, feedback
+              classification, and transparent decision support can be prototyped in a modern web
+              application.
+            </p>
+            <p>
+              <strong>The first version is only a frontend prototype.</strong> It focuses on UI,
+              scoring logic, and data visualization — all running entirely in the browser with no
+              server-side processing.
+            </p>
           </div>
         </div>
 
-        <div className="space-y-4 pt-4 border-t border-slate-100">
-          <h3 className="font-bold text-xl text-slate-800 flex items-center space-x-2">
-            <BookOpen className="h-5.5 w-5.5 text-brand-600" />
-            <span>Civic Intelligence Concepts</span>
-          </h3>
-          <p className="text-slate-600 leading-relaxed text-sm">
-            Civic intelligence is the study and implementation of cooperative problem-solving by public groups. Using technologies like dashboard priority mapping, cities can gain data-driven visibility into resource allocation, ensuring high-risk sectors (e.g., waste congestion or traffic gridlocks) receive optimal attention.
-          </p>
+        <div className="rounded-3xl border border-stone-200 bg-white/85 p-6 shadow-sm shadow-amber-900/5">
+          <div className="flex items-center gap-2 border-b border-stone-100 pb-4">
+            <Layers className="h-5 w-5 text-emerald-700" />
+            <h2 className="text-lg font-extrabold text-slate-950">Learning Focus Areas</h2>
+          </div>
+          <ul className="mt-4 space-y-3">
+            {learningFocus.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.label} className="flex items-center gap-3">
+                  <div className="rounded-lg bg-emerald-50 p-1.5 text-emerald-700 ring-1 ring-emerald-100">
+                    <Icon className="h-4 w-4" />
+                  </div>
+                  <span className="text-sm text-slate-700">{item.label}</span>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-      </div>
+      </section>
+
+      {/* Not Included Yet */}
+      <section className="rounded-3xl border border-amber-200 bg-amber-50/90 p-6 shadow-sm">
+        <div className="flex items-center gap-2 border-b border-amber-200/70 pb-4">
+          <Info className="h-5 w-5 text-amber-700" />
+          <h2 className="text-lg font-extrabold text-amber-950">Not Included in This Version</h2>
+        </div>
+        <p className="mt-4 text-sm leading-6 text-amber-900">
+          The following components are intentionally excluded from this first version. They may be
+          added in future iterations as the project scope expands.
+        </p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          {notIncluded.map((item) => {
+            const Icon = item.icon;
+            return (
+              <li key={item.label} className="flex items-center gap-3 text-sm text-amber-950">
+                <div className="rounded-lg bg-amber-100 p-1.5 text-amber-700">
+                  <Icon className="h-4 w-4" />
+                </div>
+                {item.label}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="rounded-3xl border border-stone-200 bg-white/85 p-6 shadow-sm shadow-amber-900/5">
+        <div className="flex items-center gap-2 border-b border-stone-100 pb-4">
+          <Code2 className="h-5 w-5 text-emerald-700" />
+          <h2 className="text-lg font-extrabold text-slate-950">Technology Stack</h2>
+        </div>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { name: "React 19", desc: "UI library" },
+            { name: "TypeScript", desc: "Type safety" },
+            { name: "Tailwind CSS v4", desc: "Utility-first styling" },
+            { name: "Vite", desc: "Build tool" },
+            { name: "React Router", desc: "Client-side routing" },
+            { name: "Lucide React", desc: "Icon library" },
+          ].map((tech) => (
+            <div key={tech.name} className="rounded-2xl border border-stone-200 bg-stone-50 p-4">
+              <p className="font-bold text-slate-900">{tech.name}</p>
+              <p className="mt-1 text-xs text-slate-500">{tech.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Adaptation Note */}
+      <section className="rounded-3xl border border-stone-200 bg-white/85 p-6 shadow-sm shadow-amber-900/5">
+        <div className="flex items-center gap-2 border-b border-stone-100 pb-4">
+          <Map className="h-5 w-5 text-emerald-700" />
+          <h2 className="text-lg font-extrabold text-slate-950">Adaptation from CIVICTWIN Purwokerto</h2>
+        </div>
+        <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
+          <p>
+            The original CIVICTWIN concept was designed for Semarang. This project adapts the idea
+            entirely for <strong>Purwokerto</strong>, replacing all city-specific context:
+          </p>
+          <ul className="ml-4 list-disc space-y-1">
+            <li>Districts replaced with Purwokerto Utara, Timur, Selatan, Barat.</li>
+            <li>Coastal/tidal flood context removed (not relevant to Purwokerto).</li>
+            <li>Urban issues adjusted: local flooding, drainage, traffic, waste, public services, student mobility, UMKM activity.</li>
+            <li>Data references use general placeholders (BPS Kabupaten Banyumas, BPBD, etc.).</li>
+            <li>Visual identity inspired by Purwokerto warmth, Baturraden nature, and Mount Slamet.</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="rounded-2xl border border-stone-200 bg-stone-50 p-5 text-center text-xs text-slate-500">
+        <p>
+          © 2026 Purwokerto Intelligence Layer. Educational civic intelligence prototype.
+        </p>
+        <p className="mt-1">
+          Simulated data only. Not an official government platform.
+        </p>
+      </section>
     </div>
   );
 };

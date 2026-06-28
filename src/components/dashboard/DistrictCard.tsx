@@ -1,43 +1,46 @@
-import React from "react";
-import { Landmark, ArrowUpRight, Flame, ShieldAlert, AlertCircle, CheckCircle2 } from "lucide-react";
-import type { District, PriorityResult } from "../../types";
+import { AlertCircle, ArrowUpRight, CheckCircle2, Flame, MapPinned, ShieldAlert } from "lucide-react";
+import type { DistrictIndicatorProfile, PriorityResult } from "../../types";
+import { ProgressBar } from "../ui/ProgressBar";
 
 interface DistrictCardProps {
-  district: District;
+  district: DistrictIndicatorProfile;
   score: number;
   status: PriorityResult["status"];
 }
 
-export const DistrictCard: React.FC<DistrictCardProps> = ({ district, score, status }) => {
-  // Map priority status to colors and icons
+export function DistrictCard({ district, score, status }: DistrictCardProps) {
   const getStatusConfig = (priorityStatus: PriorityResult["status"]) => {
     switch (priorityStatus) {
       case "Critical":
         return {
-          bg: "bg-red-50 border-red-200",
+          panel: "bg-red-50 border-red-200",
           text: "text-red-800",
           badgeBg: "bg-red-100 text-red-800 border-red-200",
+          bar: "bg-red-500",
           icon: ShieldAlert,
         };
       case "High":
         return {
-          bg: "bg-amber-50 border-amber-200",
-          text: "text-amber-800",
-          badgeBg: "bg-amber-100 text-amber-800 border-amber-200",
+          panel: "bg-orange-50 border-orange-200",
+          text: "text-orange-800",
+          badgeBg: "bg-orange-100 text-orange-800 border-orange-200",
+          bar: "bg-orange-500",
           icon: Flame,
         };
       case "Medium":
         return {
-          bg: "bg-blue-50 border-blue-200",
-          text: "text-blue-800",
-          badgeBg: "bg-blue-100 text-blue-800 border-blue-200",
+          panel: "bg-sky-50 border-sky-200",
+          text: "text-sky-800",
+          badgeBg: "bg-sky-100 text-sky-800 border-sky-200",
+          bar: "bg-sky-500",
           icon: AlertCircle,
         };
-      default:
+      case "Low":
         return {
-          bg: "bg-slate-50 border-slate-200",
-          text: "text-slate-700",
-          badgeBg: "bg-slate-100 text-slate-700 border-slate-200",
+          panel: "bg-emerald-50 border-emerald-200",
+          text: "text-emerald-800",
+          badgeBg: "bg-emerald-100 text-emerald-800 border-emerald-200",
+          bar: "bg-emerald-500",
           icon: CheckCircle2,
         };
     }
@@ -45,108 +48,73 @@ export const DistrictCard: React.FC<DistrictCardProps> = ({ district, score, sta
 
   const statusConfig = getStatusConfig(status);
   const StatusIcon = statusConfig.icon;
+  const indicators = [
+    { label: "Traffic Index", value: district.trafficIndex, color: "bg-blue-600" },
+    { label: "Waste Index", value: district.wasteIndex, color: "bg-amber-500" },
+    { label: "Drainage & Flood Index", value: district.drainageFloodIndex, color: "bg-sky-600" },
+    { label: "Road Infrastructure", value: district.roadInfraIndex, color: "bg-stone-600" },
+    { label: "Public Service Pressure", value: district.publicServicePressureIndex, color: "bg-indigo-650" },
+    { label: "Student Mobility Index", value: district.studentMobilityIndex, color: "bg-teal-600" },
+    { label: "Complaint Urgency Index", value: district.complaintUrgencyIndex, color: "bg-red-500" },
+  ];
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow transition-shadow duration-200">
-      {/* Card Header */}
-      <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 bg-slate-100 text-slate-700 rounded-lg">
-            <Landmark className="h-5 w-5" />
+    <article className="overflow-hidden rounded-3xl border border-stone-200 bg-white/90 shadow-sm shadow-amber-900/5 backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:border-amber-200 hover:shadow-lg hover:shadow-amber-900/10">
+      <div className="flex flex-col gap-4 border-b border-stone-100 px-5 py-5 sm:flex-row sm:items-start sm:justify-between sm:px-6">
+        <div className="flex items-center gap-3">
+          <div className="rounded-2xl bg-emerald-50 p-3 text-brand-700 ring-1 ring-emerald-100">
+            <MapPinned className="h-5 w-5" />
           </div>
           <div>
-            <h3 className="font-semibold text-slate-800 text-lg leading-tight">{district.name}</h3>
-            <span className="text-xs text-slate-400">ID: {district.id}</span>
+            <h3 className="text-lg font-extrabold leading-tight text-slate-950">{district.name}</h3>
+            <span className="text-xs font-medium uppercase tracking-[0.16em] text-slate-400">
+              Source: {district.sourceStatus}
+            </span>
           </div>
         </div>
-        <span
-          className={`flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-semibold border ${statusConfig.badgeBg}`}
-        >
+        <span className={`inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold ${statusConfig.badgeBg}`}>
           <StatusIcon className="h-3.5 w-3.5" />
           <span>{status}</span>
         </span>
       </div>
 
-      {/* Card Body */}
-      <div className="p-6">
-        {/* Indicators List */}
-        <div className="space-y-3">
-          {/* Traffic Index */}
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span className="text-slate-500 font-medium">Traffic Index</span>
-              <span className="text-slate-800 font-semibold">{district.trafficIndex}/100</span>
+      <div className="p-5 sm:p-6">
+        <div className="space-y-4">
+          {indicators.map((indicator) => (
+            <div key={indicator.label}>
+              <div className="mb-1.5 flex justify-between text-sm">
+                <span className="font-semibold text-slate-500">{indicator.label}</span>
+                <span className="font-bold text-slate-800">{indicator.value}/100</span>
+              </div>
+              <ProgressBar value={indicator.value} colorClass={indicator.color} />
             </div>
-            <div className="w-full bg-slate-100 rounded-full h-1.5">
-              <div
-                className="bg-indigo-500 h-1.5 rounded-full"
-                style={{ width: `${district.trafficIndex}%` }}
-              ></div>
-            </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Waste Index */}
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span className="text-slate-500 font-medium">Waste Index</span>
-              <span className="text-slate-800 font-semibold">{district.wasteIndex}/100</span>
-            </div>
-            <div className="w-full bg-slate-100 rounded-full h-1.5">
-              <div
-                className="bg-amber-500 h-1.5 rounded-full"
-                style={{ width: `${district.wasteIndex}%` }}
-              ></div>
-            </div>
+        <div className={`mt-6 rounded-2xl border p-4 ${statusConfig.panel}`}>
+          <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-white/80">
+            <div className={`h-1.5 rounded-full ${statusConfig.bar}`} style={{ width: `${score}%` }} />
           </div>
-
-          {/* Public Service Index */}
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span className="text-slate-500 font-medium">Public Service Index</span>
-              <span className="text-slate-800 font-semibold">{district.publicServiceIndex}/100</span>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <span className="block text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Priority Score</span>
+              <span className="text-3xl font-black tracking-tight text-slate-950">{score}</span>
             </div>
-            <div className="w-full bg-slate-100 rounded-full h-1.5">
-              <div
-                className="bg-emerald-500 h-1.5 rounded-full"
-                style={{ width: `${district.publicServiceIndex}%` }}
-              ></div>
-            </div>
-          </div>
-
-          {/* Student Mobility Index */}
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span className="text-slate-500 font-medium">Student Mobility Index</span>
-              <span className="text-slate-800 font-semibold">{district.studentMobilityIndex}/100</span>
-            </div>
-            <div className="w-full bg-slate-100 rounded-full h-1.5">
-              <div
-                className="bg-violet-500 h-1.5 rounded-full"
-                style={{ width: `${district.studentMobilityIndex}%` }}
-              ></div>
+            <div className="text-right">
+              <span className={`flex items-center justify-end text-sm font-bold ${statusConfig.text}`}>
+                <span>Needs Review</span>
+                <ArrowUpRight className="ml-0.5 h-4 w-4" />
+              </span>
+              <span className="text-xs font-medium text-slate-500">Rule-based decision support</span>
             </div>
           </div>
         </div>
 
-        {/* Priority Score Summary */}
-        <div className={`mt-6 p-4 rounded-lg border ${statusConfig.bg} flex items-center justify-between`}>
-          <div>
-            <span className="text-xs uppercase tracking-wider text-slate-400 font-bold block">
-              Priority Score
-            </span>
-            <span className="text-3xl font-extrabold text-slate-800 tracking-tight">
-              {score}
-            </span>
-          </div>
-          <div className="text-right">
-            <span className={`text-sm font-semibold flex items-center justify-end ${statusConfig.text}`}>
-              <span>Needs Review</span>
-              <ArrowUpRight className="h-4 w-4 ml-0.5" />
-            </span>
-            <span className="text-xs text-slate-400">Rule-based decision</span>
-          </div>
+        <div className="mt-5 rounded-2xl border border-stone-200 bg-stone-50/80 p-4">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">Recommended Action</p>
+          <p className="mt-2 text-sm leading-6 text-slate-700">{district.recommendedAction}</p>
         </div>
       </div>
-    </div>
+    </article>
   );
-};
+}

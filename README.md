@@ -1,92 +1,152 @@
-# Purwokerto Intelligence Layer
+# 🗺️ Purwokerto Intelligence Layer (PIL)
+> *Platform Intelijen Publik & Dashboard GIS Interaktif Prioritas Pembangunan Kota Purwokerto*
 
-## Deskripsi Project
-**Purwokerto Intelligence Layer** adalah sebuah prototype smart city dashboard dan civic intelligence untuk wilayah Purwokerto. Project ini dibangun sebagai portofolio pembelajaran informatika untuk menerapkan visualisasi data perkotaan, algoritma prioritas berbasis aturan (*rule-based decision support*), pemodelan struktur data, dan rancangan UI/UX yang modern.
+[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD627)](https://vite.dev/)
+[![React 19](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Leaflet GIS](https://img.shields.io/badge/Leaflet_GIS-199900?style=for-the-badge&logo=leaflet&logoColor=white)](https://leafletjs.com/)
 
-## Tujuan Project
-1. **Penerapan Algoritma:** Menggunakan formula MCDM (*Multi-Criteria Decision Making*) linier sederhana untuk pembobotan urgensi wilayah.
-2. **Visualisasi Civic Intelligence:** Menyediakan dashboard analitis yang memetakan prioritas pembangunan atau intervensi publik di setiap kecamatan.
-3. **Sarana Pembelajaran:** Berfungsi sebagai pondasi portofolio rekayasa perangkat lunak modern menggunakan React, TypeScript, dan Tailwind CSS.
+---
 
-## Tech Stack
-- **Framework:** React 19 (TypeScript)
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS (dengan Tailwind CSS v4)
-- **Routing:** React Router v7
-- **Iconography:** Lucide React
-- **Standardisasi Code:** ESLint, Prettier
+## 📌 Deskripsi Proyek
+**Purwokerto Intelligence Layer (PIL)** adalah prototipe sistem penunjang keputusan perkotaan (*smart city decision support system*) dan dashboard *Civic Intelligence* interaktif untuk wilayah Kecamatan Pusat Purwokerto (Purwokerto Utara, Purwokerto Timur, Purwokerto Selatan, Purwokerto Barat). 
 
-## Fitur Setup Awal
-- **Landing Page:** Halaman pembuka interaktif dengan informasi umum project dan akses cepat menuju dashboard utama.
-- **Dashboard Page:** Halaman utama yang memetakan data indikator dari 4 kecamatan di Purwokerto (Utara, Timur, Selatan, Barat). Setiap kecamatan memiliki:
-  - Traffic Index (Indeks kemacetan lalu lintas)
-  - Waste Index (Indeks penumpukan/pengelolaan sampah)
-  - Public Service Index (Indeks kebutuhan/friksi pelayanan publik)
-  - Student Mobility Index (Indeks mobilitas pelajar/mahasiswa)
-  - Priority Score & Priority Status (Hasil kalkulasi tingkat prioritas intervensi)
-- **Methodology Page:** Dokumentasi rumus pembobotan (*linear weighting formula*) dan tabel status prioritas.
-- **About Page:** Informasi mengenai tujuan akademis project ini sebagai portofolio civic intelligence.
+Platform ini dirancang khusus untuk mensimulasikan agregasi data indikator perkotaan, memetakan secara spasial prioritas penanganan wilayah menggunakan Leaflet GIS, menguji sensitivitas kebijakan lewat simulator bobot dinamis, serta meningkatkan akuntabilitas melalui penyelesaian keluhan warga.
 
-## Struktur Folder
+---
+
+## 🌟 Fitur Utama (Features)
+
+### 1. 🗺️ Peta Prioritas Perkotaan GIS (Interactive Leaflet Map)
+*   **Interaktif & Spasial:** Visualisasi batas wilayah administratif 4 kecamatan pusat Purwokerto menggunakan poligon GeoJSON.
+*   **Layer Dinamis:** Ganti visualisasi peta secara instan antara:
+    *   *Skor Prioritas Utama* (Formula Pembobotan)
+    *   *Lalu Lintas & Mobilitas*
+    *   *Drainase & Banjir*
+    *   *Sampah & Kebersihan*
+    *   *Mobilitas Pelajar*
+    *   *Urgensi Laporan Warga*
+    *   *Tingkat Keyakinan Data*
+*   **Penanda Detail (Interactive Markers):** Klik marker berdesain modern di setiap pusat kecamatan untuk menampilkan skor dinamis dan melihat detail indikator secara instan pada panel kanan.
+
+### 2. 🎛️ Simulator Kebijakan Dinamis (Policy Simulator)
+*   **Penyesuaian Bobot Kriteria:** Geser slider bobot indikator secara real-time untuk melihat pergeseran prioritas pembangunan.
+*   **Presets Skenario Perkotaan:** Pilih skenario siap pakai seperti *Prioritas Musim Hujan* (banjir & sampah), *Lalu Lintas Padat* (kemacetan & pelajar), *Responsif Warga* (laporan), atau *Reset Setelan Pabrik*.
+*   **Perhitungan Real-time:** Peringkat kecamatan diperbarui secara langsung saat bobot digeser.
+
+### 3. 💬 Sinyal Umpan Balik Warga (Civic Feedback Signals)
+*   **Agregasi Keluhan Warga:** Modul analitis untuk meninjau sentimen keluhan publik dari media sosial, SMS, dan platform laporan resmi.
+*   **Kategori Masalah:** Pelabelan otomatis untuk kemacetan, drainase, persampahan, dan fasilitas publik.
+*   **Sanitasi Data:** Fitur sensor otomatis kata sandi, email, dan NIK demi perlindungan privasi data warga.
+
+### 4. 📄 Draf Ringkasan Kebijakan AI (AI Policy Brief Draft)
+*   **Generasi Ringkasan Eksekutif:** Secara otomatis membuat dokumen brief kebijakan dengan menyoroti area darurat utama, rekomendasi penanganan taktis, dan pemaparan metodologi pembobotan.
+*   **Aksi Cepat Ekspor:** Cetak dokumen langsung menggunakan gaya ramah cetak (print-friendly stylesheet) untuk rapat koordinasi dinas.
+
+### 5. ⚖️ Akuntabilitas Resolusi (Resolution Accountability)
+*   **Peta Jalan Validasi Lapangan:** Memetakan status penanganan (Selesai, Sedang Diverifikasi, Proses Lapangan) dan tingkat keyakinan data (*Data Confidence Score*) guna memastikan transparansi audit fisik sebelum anggaran dialokasikan.
+
+---
+
+## ⚙️ Arsitektur & Teknologi (Tech Stack)
+
+*   **Frontend Library:** React 19 (Hooks, Context, State Management)
+*   **Programming Language:** TypeScript (Strict Type-Safety)
+*   **Build Tool & Dev Server:** Vite 8
+*   **Styling Engine:** Tailwind CSS v4 (Sistem grid modern, flexbox, utilitas transisi, dan filter backdrop blur)
+*   **Mapping Engine:** Leaflet JS & React Leaflet (Rendering peta, kontrol layer, marker dinamis, popup tooltip)
+*   **Routing System:** React Router v7
+*   **Icon Library:** Lucide React
+
+---
+
+## 📂 Struktur Direktori Proyek
+
 ```text
-src/
-├── components/
-│   ├── layout/
-│   │   └── Layout.tsx         # Layout navigasi & footer global
-│   ├── ui/                    # UI components reusable (jika ada)
-│   └── dashboard/
-│       └── DistrictCard.tsx   # Card informasi indikator tiap kecamatan
-├── data/
-│   └── purwokertoDistricts.ts # Data simulasi 4 kecamatan
-├── pages/
-│   ├── LandingPage.tsx        # Halaman pembuka / welcome
-│   ├── DashboardPage.tsx      # Dashboard utama peta prioritas
-│   ├── MethodologyPage.tsx    # Dokumentasi formula & threshold
-│   └── AboutPage.tsx          # Halaman portofolio & tech stack
-├── utils/
-│   └── scoring.ts             # Utility kalkulasi score & status prioritas
-├── types/
-│   └── index.ts               # Definisi type TypeScript (District, PriorityResult)
-├── App.tsx                    # React Router routes setup
-├── main.tsx                   # React root mount
-└── index.css                  # Tailwind CSS import directives
+Purwokerto-intelligence-layer/
+├── Asset/                     # Aset gambar & ilustrasi
+├── public/                    # Aset publik statis (Favicon, Icons)
+├── src/
+│   ├── assets/                # Gambar yang diproses oleh build tool
+│   ├── components/            # Komponen modular reusable
+│   │   ├── accountability/    # Detail laporan & progres verifikasi lapangan
+│   │   ├── dashboard/         # Widget ringkasan, preview civic, & metrik
+│   │   ├── feedback/          # Filter & daftar keluhan warga
+│   │   ├── map/               # Peta GIS Canvas, Kontrol Layer, Legenda, & Detail
+│   │   ├── signalReview/      # Analisis sentimen laporan
+│   │   ├── simulator/         # Slider bobot dinamis & kontrol skenario preset
+│   │   └── ui/                # Elemen antarmuka generik
+│   ├── data/                  # GeoJSON boundaries & dataset simulasi kecamatan
+│   ├── pages/                 # Halaman utama rute aplikasi
+│   │   ├── DashboardPage.tsx  # Halaman dashboard & peta GIS utama
+│   │   ├── SimulatorPage.tsx  # Simulasi bobot kebijakan publik
+│   │   ├── FeedbackPage.tsx   # Pusat keluhan warga & sanitasi data
+│   │   ├── PolicyBriefPage.tsx# Draf laporan ringkasan kebijakan otomatis
+│   │   ├── AccountabilityPage.tsx # Validasi lapangan & status resolusi
+│   │   └── AboutPage.tsx      # Latar belakang akademik & profil
+│   ├── types/                 # Definisi tipe TypeScript
+│   ├── utils/                 # Logika pembobotan (scoring) & penyimpanan lokal
+│   ├── App.tsx                # Konfigurasi rute React Router
+│   ├── main.tsx               # Entrypoint inisialisasi React
+│   └── index.css              # Setup Tailwind & kustomisasi global
+├── index.html                 # Template HTML utama
+├── tailwind.config.js         # Konfigurasi Tailwind CSS
+├── tsconfig.json              # Konfigurasi TypeScript compiler
+└── vite.config.ts             # Konfigurasi bundler Vite
 ```
 
-## Cara Menjalankan Project
+---
 
-### Prerequisites
-Pastikan Anda sudah menginstal **Node.js** (rekomendasi LTS v18 ke atas) dan **npm** di komputer Anda.
+## 🚀 Cara Menjalankan Aplikasi di Komputer Anda
 
-### Langkah Instalasi
-1. Clone repository ini atau buka folder workspace.
-2. Instal semua dependensi:
-   ```bash
-   npm install
-   ```
+### 📦 Prasyarat (Prerequisites)
+Pastikan komputer Anda sudah terpasang **Node.js** (LTS v18 atau yang lebih baru) dan **npm**.
 
-### Menjalankan Development Server
-Untuk menjalankan project secara lokal dengan hot-reload:
-```bash
-npm run dev
-```
-Setelah dijalankan, buka alamat yang tertera di terminal (biasanya `http://localhost:5173`) di browser Anda.
+### 🛠️ Langkah Instalasi & Menjalankan
 
-### Build untuk Produksi
-Untuk melakukan kompilasi file menjadi aset siap produksi (HTML, JS, CSS teroptimasi di dalam folder `dist/`):
-```bash
-npm run build
-```
-Anda juga dapat mengetes hasil build produksi secara lokal dengan perintah:
-```bash
-npm run preview
-```
+1.  **Unduh Repositori & Masuk Folder:**
+    ```bash
+    git clone https://github.com/hanif-12-01/Purwokerto-intelligence-layer.git
+    cd Purwokerto-intelligence-layer
+    ```
 
-## Catatan Simulasi Data
-> **PENTING:** Seluruh data indikator (Traffic, Waste, Public Service, Student Mobility) yang ditampilkan di dalam project ini adalah **data simulasi/mock** untuk kepentingan demonstrasi dan akademik. Project ini **bukan** sistem resmi pemerintah Kabupaten Banyumas atau Kota Purwokerto.
+2.  **Instal Dependensi Project:**
+    ```bash
+    npm install
+    ```
 
-## Roadmap Pengembangan
-- [ ] **Phase 1 (Current):** Setup initial frontend prototype foundation (React + TS + Tailwind + Routing).
-- [ ] **Phase 2:** Integrasi visualisasi grafik menggunakan library chart (seperti Recharts) untuk tren indikator.
-- [ ] **Phase 3:** Penambahan peta interaktif (Leaflet / Mapbox) untuk visualisasi spasial kecamatan di Purwokerto.
-- [ ] **Phase 4:** Fitur simulasi dinamis (Slider control) agar user dapat menyesuaikan sendiri bobot (*weights*) formula prioritas secara real-time.
-- [ ] **Phase 5:** Pembuatan mock backend API atau integrasi dengan serverless functions untuk persistence data.
+3.  **Jalankan Mode Pengembangan (Development Server):**
+    ```bash
+    npm run dev
+    ```
+    *Aplikasi akan berjalan secara lokal. Buka alamat yang muncul di terminal Anda (contohnya `http://localhost:5173` atau `http://localhost:5177`).*
+
+4.  **Kompilasi Aset untuk Produksi (Production Build):**
+    ```bash
+    npm run build
+    ```
+    *Hasil kompilasi file statis optimal siap diunggah akan berada di dalam folder `dist/`.*
+
+---
+
+## 🧠 Metodologi Pembobotan Skor Prioritas
+Penetapan prioritas pembangunan dihitung menggunakan pendekatan **Multi-Criteria Decision Making (MCDM)** terbobot:
+
+$$\text{Skor Prioritas} = \sum (I_i \times W_i)$$
+
+Di mana:
+*   $I_i$ = Indeks ternormalisasi (0 - 100) untuk masing-masing kriteria (Lalu lintas, Drainase, Sampah, Jalan, Keluhan, Mobilitas Pelajar, Beban Layanan).
+*   $W_i$ = Bobot kriteria ($0 - 1$) yang dapat disesuaikan secara interaktif pada menu **Simulator**.
+
+---
+
+## 🔒 Pernyataan Data Simulasi
+> ⚠️ **Pernyataan Penting:** Seluruh indikator kinerja perkotaan, batasan kecamatan, keluhan warga, dan analisis skor di dalam platform ini adalah **data simulasi/buatan (mock data)** yang ditujukan sebagai materi demonstrasi portofolio rekayasa perangkat lunak dan analisis spasial dasar. Platform ini **bukan** representasi atau sistem operasional resmi milik Pemerintah Kabupaten Banyumas maupun Pemerintah Daerah Kota Purwokerto.
+
+---
+
+## 🧑‍💻 Hak Cipta & Kontribusi
+Dikembangkan dengan penuh dedikasi sebagai platform portofolio teknologi civic intelligence interaktif Purwokerto. 
+
+*Design & Development by [Hanif](https://github.com/hanif-12-01).*
