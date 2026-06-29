@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { BarChart3, Eye, HelpCircle, Info, Landmark, LayoutDashboard, Menu, SlidersHorizontal, X, ShieldCheck, MapPinned, MessagesSquare } from "lucide-react";
+import { BarChart3, Eye, HelpCircle, Info, Landmark, LayoutDashboard, LockKeyhole, Menu, SlidersHorizontal, X, ShieldCheck, MapPinned, MessagesSquare } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,6 +11,7 @@ const govNavItems = [
   { name: "Tinjau Sinyal", path: "/signal-review", icon: ShieldCheck },
   { name: "Metodologi", path: "/methodology", icon: HelpCircle },
   { name: "Simulator", path: "/simulator", icon: SlidersHorizontal },
+  { name: "Defensive Lab", path: "/security-lab", icon: LockKeyhole },
   { name: "Transparansi", path: "/transparency", icon: Eye },
   { name: "Tentang", path: "/about", icon: Info },
 ];
