@@ -12,6 +12,7 @@ import { FeedbackPage } from "./pages/FeedbackPage";
 import { AccountabilityPage } from "./pages/AccountabilityPage";
 import { PolicyBriefPage } from "./pages/PolicyBriefPage";
 import { SignalReviewPage } from "./pages/SignalReviewPage";
+import { SecurityLabPage } from "./pages/SecurityLabPage";
 import { PublicFeedbackPage } from "./pages/public/PublicFeedbackPage";
 
 const App: React.FC = () => {
@@ -27,11 +28,10 @@ const App: React.FC = () => {
           <Route path="/policy-brief" element={<PolicyBriefPage />} />
           <Route path="/methodology" element={<MethodologyPage />} />
           <Route path="/simulator" element={<SimulatorPage />} />
+          <Route path="/security-lab" element={<SecurityLabPage />} />
           <Route path="/transparency" element={<TransparencyPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/signal-review" element={<SignalReviewPage />} />
-          
-          {/* Public Portal Nested Routes */}
           <Route path="/public" element={<LandingPage />} />
           <Route path="/public/map" element={<PriorityMapPage />} />
           <Route path="/public/feedback" element={<PublicFeedbackPage />} />
